@@ -6,7 +6,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async hello() {
+     await this.appService.sendActivationMail(
+      'alexeybosko.dev+17@gmail.com',
+      'few-few-fewfg-vrge'
+    )
+
+    return 'qwerty'
   }
 }
