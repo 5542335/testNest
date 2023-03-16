@@ -6,14 +6,7 @@ import { ValidationPipe } from '@nestjs/common'
 const start = async () => {
   try {
     const PORT = 5000
-    const app = await NestFactory.create(AppModule, {
-      cors: {
-        origin: true,
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-        credentials: true,
-        maxAge: 3600
-      }
-    })
+    const app = await NestFactory.create(AppModule)
     app.use(cookieParser())
     app.useGlobalPipes(new ValidationPipe())
     app.setGlobalPrefix('api')
