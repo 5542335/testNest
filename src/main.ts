@@ -1,11 +1,10 @@
 import { NestFactory } from '@nestjs/core'
-import * as cookieParser from 'cookie-parser'
 import { AppModule } from './app.module'
 import { ValidationPipe } from '@nestjs/common'
 
 const start = async () => {
   try {
-    const PORT = 5000
+    const PORT = 5001
     const app = await NestFactory.create(AppModule, {
       cors: {
         origin: true,
@@ -14,7 +13,6 @@ const start = async () => {
         maxAge: 3600
       }
     })
-    app.use(cookieParser())
     app.useGlobalPipes(new ValidationPipe())
     app.setGlobalPrefix('api')
 
